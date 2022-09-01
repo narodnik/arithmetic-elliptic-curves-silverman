@@ -57,3 +57,21 @@ of $V$. When $f$ contains linear terms, this allows us to reduce the dimension b
 smooth point.
 
 $$x \equiv y^2 - x^3 \equiv 0 \quad (\textrm{mod} \; M_p^2)$$
+
+## 1.6
+
+The morphism is regular at all P. The only zero value is at $\infty = [0 : 1 : 0]$.
+
+$$x^2 = \frac{z}{x}(y^2 - z^2)$$
+
+\begin{align*}
+[x^2 : xy : z^2] &= [\frac{z}{x}(y^2 - z^2) : xy : z^2] \\
+    &= [z(y^2 - z^2) : x^2 y : x z^2] \\
+    &= [z(y^2 - z^2) : \frac{z}{x}(y^2 - z^2) y : xz^2 ] \\
+    &= [xz(y^2 - z^2) : z(y^3 - y z^2) : x^2 z^2 ] \\
+    &= [x(y^2 - z^2) : y^3 - y z^2 : x^2 z ] \\
+\end{align*}
+
+$$\phi(\infty) = \infty$$
+
+As expected.
