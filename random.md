@@ -24,3 +24,21 @@ $k$ is embedding degree of $E$, then $\mu_n \subseteq \mathbb{F}_{p^k}$.
 
 $$\tau_n(P, Q) = f_{nD_P}(D_Q)^{\frac{p^k - 1}{n}}$$
 
+# Equivalent Tate Pairing
+
+Let $Q_0$ be such that $nQ_0 = Q$. Such a point is guaranteed to exist by the surjectivity
+of multiplication by $n$ map.
+
+\begin{tikzcd}
+    Q_0 \arrow[r] \arrow[d]                     & E(\mathbb{F}_{p^k}) \ni Q \arrow[d] \\
+    n: E(\overline{\mathbb{F}_{p^k}}) \arrow[r] & E(\overline{\mathbb{F}_{p^k}})    
+\end{tikzcd}
+
+Then let $Q_1 = (\Phi^k - 1)(Q_0)$ where $Q_0 \in E[n]$ and $\Phi$ is the frobenius automorphism.
+Then $Q_1 \in E[n]$.
+
+\begin{align*}
+e_n(P, Q_1) &= \frac{g_P(S + Q_1)}{g_P(S)} \\
+            &= \tau_n(P, Q)
+\end{align*}
+
