@@ -128,7 +128,7 @@ for the even powers of $f(ω^{2i})$.
 For odd values $k = 2i + 1$
 
 \begin{align*}
-s(X)        &= (g(X) + h(X))·(ω^0, …, ω^{n/2 - 1}) \\
+s(X)        &= (g(X) - h(X))·(ω^0, …, ω^{n/2 - 1}) \\
 \\
 f(X)          &= a_0 + a_1 X + a_2 X^2 + ⋯ + a_{n - 1} X^{n - 1} \\
               &= g(X) + X^{n/2} h(X) \\
@@ -150,5 +150,84 @@ for the odd powers of $f(ω^{2i + 1})$.
 
 # Example
 
-TODO
+Let $n = 8$
+\begin{align*}
+f(X)    &= (a_0 + a_1 X + a_2 X^2 + a_3 X^3) +     (a_4 X^4 + a_5 X^5 + a_6 X^6 + a_7 X^7) \\
+        &= (a_0 + a_1 X + a_2 X^2 + a_3 X^3) + X^4 (a_4     + a_5 X   + a_6 X^2 + a_7 X^3) \\
+        &= g(X) + X^{n/2} h(X) \\
+g(X)    &=  a_0 + a_1 X + a_2 X^2 + a_3 X^3 \\
+h(X)    &=  a_4 + a_5 X + a_6 X^2 + a_7 X^3 \\
+\end{align*}
+Now vectorize $g(X), h(X)$
+\begin{align*}
+\mathbf{g} &= (a_0, a_1, a_2, a_3) \\
+\mathbf{h} &= (a_4, a_5, a_6, a_7) \\
+\end{align*}
+Compute reduced polynomials in vector form
+\begin{align*}
+\mathbf{r} &=  \mathbf{g} + \mathbf{h} \\
+           &= (a_0 + a_4, a_1 + a_5, a_2 + a_6, a_3 + a_7) \\
+\mathbf{s} &= (\mathbf{g} - \mathbf{h})·(1, ω, ω^2, ω^3) \\
+           &= (a_0 - a_4, a_1 - a_5, a_2 - a_6, a_3 - a_7)·(1, ω, ω^2, ω^3) \\
+           &= (a_0 - a_4, ω (a_1 - a_5), ω^2 (a_2 - a_6), ω^3 (a_3 - a_7)) \\
+\end{align*}
+Convert them to polynomials from the vectors. We also expand them out below
+for completeness.
+\begin{align*}
+r(X)       &= r_0 + r_1 X + r_2 X^2 + r_3 X^3 \\
+           &= (a_0 + a_4) + (a_1 + a_5) X + (a_2 + a_6) X^2 + (a_3 + a_7) X^3 \\
+s(X)       &= s_0 + s_1 X + s_2 X^2 + s_3 X^3 \\
+           &= (a_0 - a_4) + ω (a_1 - a_5) X + ω^2 (a_2 - a_6) X^2 + ω^3 (a_3 - a_7) X^3 \\
+\end{align*}
+Compute
+$$ \textrm{DFT}_{ω^2}(4, r(X)), \textrm{DFT}_{ω^2}(4, s(X)) $$
+The values returned will be
+$$
+(r(1), s(1), r(ω^2), s(ω^2), r(ω^4), s(ω^4), r(ω^6), s(ω^6))
+=
+(f(1), f(ω), f(ω^2), f(ω^3), f(ω^4), f(ω^5), f(ω^6), f(ω^7))
+$$
+Which is the output we return.
+
+# Comparing Evaluations for $f(X)$ and $r(X), s(X)$
+
+We can see the evaluations are correct by substituting in $ω^i$.
+
+We expect that $s(X)$ on the domain $(1, ω^2, ω^4, ω^6)$ produces the values
+$(f(1), f(ω^2), f(ω^4), f(ω^6))$, while $r(X)$ on the same domain produces
+$(f(ω), f(ω^3), f(ω^5), f(ω^7))$.
+
+## Even Values
+
+Let $k = 2i$, be an even number. Then note that $k$ is a multiple of 2, so
+$4k$ is a multiple of $n ⇒ ω^{4k} = 1$,
+\begin{align*}
+r(X)       &= (a_0 + a_4) + (a_1 + a_5) X + (a_2 + a_6) X^2 + (a_3 + a_7) X^3 \\
+r(ω^{2i})  &= (a_0 + a_4) + (a_1 + a_5) ω^{2i} + (a_2 + a_6) ω^{4i} + (a_3 + a_7) ω^{6i} \\
+f(ω^k)     &= (a_0 + a_1 ω^k + a_2 ω^{2k} + a_3 ω^{3k}) + ω^{4k} (a_4     + a_5 ω^k   + a_6 ω^{2k} + a_7 ω^{3k}) \\
+           &= (a_0 + a_1 ω^k + a_2 ω^{2k} + a_3 ω^{3k}) +        (a_4     + a_5 ω^k   + a_6 ω^{2k} + a_7 ω^{3k}) \\
+           &= (a_0 + a_4) + (a_1 + a_5) ω^k + (a_2 + a_6) ω^{2k} + (a_3 + a_7) ω^{3k} \\
+           &= f(ω^{2i}) \\
+           &= (a_0 + a_4) + (a_1 + a_5) ω^{2i} + (a_2 + a_6) ω^{4i} + (a_3 + a_7) ω^{6i} \\
+           &= r(ω^{2i})
+\end{align*}
+
+## Odd Values
+
+For $k = 2i + 1$ odd, we have a similar relation where $4k = 8i + 4$, so
+$ω^{4k} = ω^4$. But observe that $ω^4 = -1$.
+\begin{align*}
+s(X)       &= (a_0 - a_4) + ω (a_1 - a_5) X + ω^2 (a_2 - a_6) X^2 + ω^3 (a_3 - a_7) X^3 \\
+s(ω^{2i})  &= (a_0 - a_4) + (a_1 - a_5) ω^{2i + 1} + (a_2 - a_6) ω^{4i + 2} + (a_3 - a_7) ω^{6i + 3} \\
+f(ω^k)     &= (a_0 + a_1 ω^k + a_2 ω^{2k} + a_3 ω^{3k}) + ω^{4k} (a_4     + a_5 ω^k   + a_6 ω^{2k} + a_7 ω^{3k}) \\
+           &= (a_0 + a_1 ω^k + a_2 ω^{2k} + a_3 ω^{3k}) -        (a_4     + a_5 ω^k   + a_6 ω^{2k} + a_7 ω^{3k}) \\
+           &= f(ω^{2i + 1}) \\
+           &= (a_0 + a_1 ω^{2i + 1} + a_2 ω^{4i + 2} + a_3 ω^{6i + 3}) -  (a_4     + a_5 ω^{2i + 1}   + a_6 ω^{4i + 2} + a_7 ω^{6i + 3}) \\
+           &= 
+           (a_0  - a_4)
+           + (a_1 - a_5) ω^{2i + 1}
+           + (a_2 - a_6) ω^{4i + 2}
+           + (a_3 - a_7) ω^{6i + 3} \\
+           &= s(ω^{2i})
+\end{align*}
 
