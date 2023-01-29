@@ -9,6 +9,33 @@ $$ f(\div(g)) = g(\div(f)) $$
 
 NOTE: cannot find proof
 
+```python
+sage: E = EllipticCurve([0, 17])
+sage: E(2, 5) + E(4, 9) + E(-2, -3)
+(0 : 1 : 0)
+sage: E(-1, 4) + E(8, 23) + E(-206/81, 541/729)
+(0 : 1 : 0)
+sage: var("x y z")
+(x, y, z)
+sage: f = y - 2*x - z
+sage: g = 9*y - 19*x - 55*z
+sage: f(x=2, y=5, z=1), f(x=4, y=9, z=1), f(x=-2, y=-3, z=1)
+(0, 0, 0)
+sage: g(x=-1, y=4, z=1), g(x=8, y=23, z=1), g(x=-206/81, y=541/729, z=1)
+(0, 0, 0)
+sage: f(x=0, y=1, z=0), g(x=0, y=1, z=0)
+(1, 9)
+sage: f(x=2, y=5, z=1) * f(x=4, y=9, z=1) * f(x=-2, y=-3, z=1) / 1
+0
+sage: g(x=-1, y=4, z=1) * g(x=8, y=23, z=1) * g(x=-206/81, y=541/729, z=1) / 9^3
+0
+sage: g(x=2, y=5, z=1) * g(x=4, y=9, z=1) * g(x=-2, y=-3, z=1) / g(x=0, y=1, z=0)^3
+-35200/243
+sage: f(x=-1, y=4, z=1) * f(x=8, y=23, z=1) * f(x=-206/81, y=541/729, z=1) / f(x=0, y=1
+....: , z=0)^3
+35200/243
+```
+
 # Divisor Construction
 
 We can either use the Miller loop, or Mumford polynomial representation.
