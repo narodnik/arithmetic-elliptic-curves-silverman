@@ -7,8 +7,6 @@ header-includes: |
 
 $$ f(\div(g)) = g(\div(f)) $$
 
-NOTE: cannot find proof
-
 ```python
 sage: E = EllipticCurve([0, 17])
 sage: E(2, 5) + E(4, 9) + E(-2, -3)
@@ -35,6 +33,22 @@ sage: f(x=-1, y=4, z=1) * f(x=8, y=23, z=1) * f(x=-206/81, y=541/729, z=1) / f(x
 ....: , z=0)^3
 35200/243
 ```
+
+## Proof
+
+Let $z ∈ ℙ¹$ and $f_*⟨g⟩(z) = g(T₁) ⋯ g(T_n)$ where $\{ T₁, …, T_n \} = f⁻¹(z)$ is the fiber for $z$.
+
+We claim that $f_*⟨g⟩(\div z) = g(\div f)$.
+$$ f⁻¹(z) = \{ T₁, …, T_n \} $$
+$$ f_*⟨g⟩(z) = g(T₁) ⋯ g(T_n) $$
+But $\div z = [0] - [∞]$
+$$ f_*⟨g⟩(0) = g(T₁) ⋯ g(T_n) $$
+where $T_i ∈ f⁻¹(0)$, which are the zeros of $f ⇒ f_*⟨g⟩([0] - [∞]) = g(\div f)$.
+
+Likewise $z(\div f_*⟨g⟩) = f(\div g)$ which using the argument above is easy to see.
+
+$$ f_*⟨g⟩([0] - [∞]) = f_*⟨g⟩(0) / f_*⟨g⟩(∞) = z(\div f_*⟨g⟩) $$
+By the fact $P/Q (\div z) = (p₀/q₀)/(p_m/q_m) ⇒ z(\div P/Q) = ($ product of roots of $P / ($ product of roots of $Q)$.
 
 # Divisor Construction
 
