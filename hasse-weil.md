@@ -158,3 +158,77 @@ $$x₀ ∉ S$$
 so $p - aq$ will not have repeated roots,
 i.e. $\# \ker(α) \deg(α)$.
 
+# Weil Pairing
+
+Recall $\textrm{gcd}(n, \textrm{char} K) = 1$.
+For $Q ∈ E[n]$ take $f_Q ∈ K(E) : \textrm{div}(f_Q) = n[Q] - n[∞]$,
+there exists $g_Q ∈ K(E) : \textrm{div}(g_Qⁿ) = \textrm{div}(f_Q \circ [n])$.
+
+For arbitrary $S ∈ E(K), P ∈ E[n]$
+$$ e_n(P, Q) = \frac{ g_Q(S + P) }{ g_Q(S) } $$
+(this does not depend on the choice of $S$)
+$$ e_n : E[n] × E[n] → μ_n(K) $$
+
+## $e_n(α(P), α(Q)) = e_n(P, Q)^{\deg α}$
+
+Let $α : E → E$ be a separable endomorphism.
+
+Observe that $α(P), α(Q) ∈ E[n]$ since
+$$ n α(P) = α(nP) = α(∞) = ∞ $$
+
+Let $\{ T₁, …, T_k \} = \ker (α)$. Since $α$ is separable, $k = \deg(α)$.
+
+$$ \textrm{div}(f_Q) = n[Q] - n[∞] $$
+$$ \textrm{div}(f_{α(Q)}) = n[α(Q)] - n[∞] $$
+$$ g_Qⁿ = f_Q \circ [n] $$
+$$ g_{α(Q)}ⁿ = f_{α(Q)} \circ [n] $$
+
+Let $τ_T : E → E$ be $X → X + T$ translation by $T$.
+
+Then $\textrm{div}(f_Q \circ τ_{-T_i}) = n[Q + T_i] - n[T_i]$.
+
+Now notice that $\textrm{div}(f_{α(Q)}) = n[α(Q)] - n[∞]$ and so
+\begin{align*}
+\textrm{div}(f_{α(Q)} \circ α) &= n \sum_{Q'' : α(Q'') = α(Q)} [Q''] - n \sum_{T : α(T) = ∞} [T] \\
+        &= n \sum_{i = 1}^k ([Q + T_i] + [T_i]) \\
+        &= \textrm{div}(\prod_{i = 1}^k f_Q \circ τ_{-T_i})
+\end{align*}
+
+For $1 ≤ i ≤ k$ choose $T_i' ∈ E[n²] : nT_i' = T_i$ then
+\begin{align*}
+g_Q(S - T_i')ⁿ &= f_Q \circ [n](S - T_i') \\
+    &= f_Q(nS - T_i)
+\end{align*}
+by the definition of $g_Q$.
+
+Now using this identity, we can see that
+\begin{align*}
+\textrm{div}( \prod_{i = 1}^k (g_Q \circ τ_{-T_i'})ⁿ) &=
+    \textrm{div}( \prod_{i = 1}^k f_Q \circ τ_{-T_i} \circ [n] ) \\
+    &= \textrm{div}( f_{α(Q)} \circ α \circ [n] )
+\end{align*}
+where we use the expression from above for $\textrm{div}(f_{α(Q)} \circ α)$.
+
+Notice $α \circ [n] = [n] \circ α$ because $nα(P) = α(nP)$, so multiplication
+by $n$ commutes with endormorphisms.
+\begin{align*}
+    \textrm{div}( f_{α(Q)} \circ α \circ [n] )
+    &= \textrm{div}( f_{α(Q)} \circ [n] \circ α ) \\
+    &= \textrm{div}( (g_{α(Q)}ⁿ) \circ α) \\
+    &= \textrm{div}( (g_{α(Q)} \circ α)ⁿ )
+\end{align*}
+
+Finally we get
+$$ \prod_{i = 1}^k (g_Q \circ τ_{-T_i'}) = g_{α(Q)} \circ α $$
+
+\begin{align*}
+e_n(α(P), α(Q)) &= \frac{ g_{α(Q)}(α(P) + α(S)) }{ g_{α(Q)}(α(S)) } \\
+    &= \prod_{i = 1}^k \frac{
+        g_Q(P + S - T_i')
+    }{
+        g_Q(S - T_i')
+    } \\
+    &= \prod_{i = 1}^k e_n(P, Q) = e_n(P, Q)^k \\
+    &= e_n(P, Q)^{\deg α}
+\end{align*}
+
