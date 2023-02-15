@@ -13,7 +13,7 @@ Frobenius is compatible wih group structure on $E(\bar{𝔽}_q)$.
 
 $E, E'$ are EC on $K$. An isogeny $α : E → E'$ is a rational map
 such that the induced map
-$$ E(\bar{K}) -> E'(\bar{K}) $$
+$$ E(\bar{K}) → E'(\bar{K}) $$
 is a group homomorphism
 
 ## Example: Frobenius
@@ -156,7 +156,77 @@ saying that $a ∉ r₁(S)$. Then since
 $r₁(x₀) = a$
 $$x₀ ∉ S$$
 so $p - aq$ will not have repeated roots,
-i.e. $\# \ker(α) \deg(α)$.
+i.e. $\# \ker(α) = \deg(α)$.
+
+$$ r₁'(x) = \frac{ p(x)q'(x) - q'(x)p(x) }{ q(x)² } $$
+
+# General Direction
+
+\begin{align*}
+\# E(𝔽_q) &= \# \ker (\Phi_q - \textrm{id}) \\
+          &= \deg (\Phi_q - \textrm{id})
+\end{align*}
+then we can estimate this degree.
+
+# Separable Map
+
+Definition of separable map
+$$ \deg α = \# \ker(α) $$
+alternatively $r₁'(x) ≠ 0$.
+
+$P, Q ∈ E[n]$ and $α$ is separable then
+$e_n(α(P), α(Q)) = e_n(P, Q)^{\deg α}$.
+
+# Invariance of Weil Pairing under "action of Galois group"
+
+$$ \textrm{Gal}(\bar{K}/K) = \{ σ ∈ \textrm{Aut}(\bar{K}) : σ|_k = \textrm{id}_K \}$$
+
+$$ \Phi_q ∈ \textrm{Gal}(\bar{𝔽}_q / 𝔽_q) $$
+
+## Proposition
+
+$$ σ ∈ \textrm{Gal}(\bar{𝔽}_q / 𝔽_q) $$
+
+$$ σ(e_n(P, Q)) = e_n(σP, σQ) $$
+
+Note $σP ∈ E$ since $σ(y)² = σ(x)³ + Aσ(x) + B$, and
+then adding is rational so $P ∈ E[n] ⇒ n · σP = ∞$.
+
+Recall that $f_Q, g_Q ∈ K(E)$
+$$ \textrm{div}(f_Q) = n[Q] - n[∞] $$
+and $g_Q$ that satisfy
+$$ g_Qⁿ = f_Q \circ [n] $$
+and for any $S ∈ E(K)$
+$$ e_n(P, Q) = \frac{ g_Q(P + S) }{ g_Q(S) } $$
+
+Write out $f_Q$ and then when it equals zero, applying $σ$ you see
+that $σQ$ is now a root of $f_Q^σ$, so
+$$\textrm{div}(f_Q^σ) = n[σQ] - n[∞]$$
+and similarly for $g_Q^σ$.
+
+\begin{align*}
+(g_Q^σ)ⁿ &= (g_Qⁿ)^σ \\
+        &= (f_Q \circ [n])^σ \\
+        &= f_Q^σ \circ [n]
+\end{align*}
+
+Thus
+\begin{align*}
+σ(e_n(P, Q)) &= σ(\frac{g_Q(P + S)}{g_Q(S)}) \\
+    &= \frac{ g_Q^σ(σP + σS) } { g_Q^σ(σS) } \\
+    &= e_n(σP, σQ)
+\end{align*}
+
+Where the last step comes from the construction of the Weil pairing.
+Namely $g_Q^σ = g_{σQ}$.
+\begin{align*}
+(g_{σQ})ⁿ &= f_{σQ} \circ [n] \\
+    &= f_Q^σ \circ [n] \\
+    &= (g_Qⁿ)^σ \\
+    &= (g_Q^σ)ⁿ \\
+    &= (f_Q \circ [n])^σ \\
+    &= f_Q^σ \circ [n]
+\end{align*}
 
 # Weil Pairing
 
