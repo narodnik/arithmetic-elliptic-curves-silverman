@@ -302,3 +302,109 @@ Namely $g_Q^σ = g_{σQ}$.
     &= f_Q^σ \circ [n]
 \end{align*}
 
+# Restriction of $α$ to $E[n]$ stays in $E[n]$
+
+$$ E[n] = ℤ_n × ℤ_n $$
+so $E[n] = ⟨T₁, T₂⟩$.
+$$ α_n =
+\begin{pmatrix}
+a & b \\
+c & d \\
+\end{pmatrix}
+$$
+\begin{align*}
+α(T₁) &= aT₁ + cT₂ \\
+α(T₂) &= bT₁ + dT₂ \\
+α(P) &= α(rT₁ + sT₂) \\
+    &= rα(T₁) + sα(T₂)
+\end{align*}
+$$ P = rT₁ + sT₂ $$
+$$
+\begin{pmatrix}
+a & b \\
+c & d \\
+\end{pmatrix}
+\begin{pmatrix}
+r \\
+s \\
+\end{pmatrix}
+=
+\begin{pmatrix}
+x \\
+y \\
+\end{pmatrix}
+$$
+$$ α(P) = xT₁ + yT₂ $$
+
+# $\det(α_n) = \deg(α) \textrm{mod} n$
+
+By weil pairing property $e_n(T₁, T₂)$ maps to a generator
+for $μ_n(𝔽_q)$.
+Let $η = e_n(T₁, T₂)$.
+Since $α$ is separable of $\Phi_q$
+$$ η^{\deg{(α)}} = e_n(T₁, T₂)^{\deg(α)} = e_n(α(T₁), α(T₂)) $$
+But using the matrix we get
+\begin{align*}
+e_n(aT₁ + cT₂, bT₁ + dT₂) &= e_n(T₁, T₁)^{ab} e_n(T₁, T₂)^{ad} e_n(T₂, T₁)^{bc} e_n(T₂, T₂)^{cd} \\
+&= 1^{ab} e_n(T₁, T₂)^{ad} e_n(T₂, T₁)^{bc} 1^{cd} \\
+&= 1^{ab} e_n(T₁, T₂)^{ad} e_n(T₁, T₂)^{-bc} 1^{cd} \qquad \text{by pairing rule about swapping args}\\
+&= e_n(T₁, T₂)^{ad - bc} \\
+&= e_n(T₁, T₂)^{\det(α_n)} \\
+&= η^{\det(α_n)}
+\end{align*}
+since $η$ is a generator, we must have
+$$ \deg(α) ≡ \det(α_n) \mod n $$
+
+# $\deg(aα + bβ) = a² \deg(α) + b² \deg(β) + ab (\deg(α + β) - \deg(α) - \deg(β))$
+
+Restrict $α, β$ using matrices $α_n, β_n$, where char $K \nmid n$.
+
+Note from linear algebra matrix determinant rules
+$\det(aα_n + bβ_n) = a² \det(α_n) + b² \det(β_n) + ab (\det(α_n + β_n) - \det(α_n) - \det(β_n))$.
+
+Now replace determinant by degree for mod n.
+
+Since this is true for infinitely many n's, we have ordinary equality.
+
+# $\deg(r \Phi_q + s) = r² q + s² - rst$
+
+$r, s ∈ ℤ, \gcd(s, q) = 1$ then
+$$t = q + 1 - \deg(\Phi_q - 1)$$
+By previous proposition
+$$ \deg(r\Phi_q - s) = r² \deg(\Phi_q) + s² \deg(-1) + rs(\deg(\Phi_q - 1) - \deg(\Phi_q) - \deg(-1)) $$
+Since $\deg(\Phi_q) = q$ and $\deg(-1) = 1$
+$$ \deg(r\Phi_q - s) = r² q + s² + rs(\deg(\Phi_q - 1) - q - 1) $$
+
+# Hasse-Weil Theorem
+
+$$ | q + 1 - \# E(𝔽_q) | ≤ 2 \sqrt{q} $$
+
+$$ \deg(\Phi_q - 1) = \# \ker(\Phi_q - 1) = \# E(𝔽_q) $$
+
+For any $r, s ∈ ℤ$ such that $\gcd(s, q) = 1$, we have
+$$ 0 ≤ \deg(r \Phi_q - s) $$
+because degrees are greater than 0.
+
+$$ r²q + s² - rst >= 0 $$
+$$ ⇔ q(\frac{r}{s})² - t(\frac{r}{s}) + 1 ≥ 0 $$
+The set of all rational numbers $r/s$ such that $\gcd(s, q) = 1$
+is dense in $\mathbb{R}$ so the polynomial
+$$ qx² - tx + 1 $$
+gets only non-negative values, and
+has non-positive discriminant.
+$$ t² - 4q ≤ 0 $$
+
+## Dense Set
+
+If $\forall x ∈ \mathbb{R}$, there exists a sequence
+$$ s_1, s_2, …, s_n, … $$
+$$ \lim_{n → ∞} s_n = x $$
+
+For example $\pi$ can be approximated with an infinite sequence of rationals.
+
+Take $x₀ ∈ \mathbb{R}$ since there exists a sequence $σ_n = r_n / s_n$
+such that $\lim σ_n = x_0$.
+
+$$ 0 ≤ \lim_{n → ∞}(q σ_n² - tσ_n + 1) = q(\lim_{n → ∞})² - t \lim_{n → ∞}(σ_n) + 1 $$
+$$ ⇒ qx₀² - tx₀ + 1 ≥ 0 $$
+
