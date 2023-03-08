@@ -408,3 +408,39 @@ such that $\lim σ_n = x_0$.
 $$ 0 ≤ \lim_{n → ∞}(q σ_n² - tσ_n + 1) = q(\lim_{n → ∞})² - t \lim_{n → ∞}(σ_n) + 1 $$
 $$ ⇒ qx₀² - tx₀ + 1 ≥ 0 $$
 
+# Hasse-Weil Corrollary
+
+In End($E$)
+$$ \Phi_q^2 - [t] \circ \Phi_q + [q] = 0 $$
+
+For all $p \nmid n$
+$$ E[n] \cong ℤ_n × ℤ_n $$
+so we represent $\Phi_q |_{E[n]} : E[n] → E[n]$
+as a matrix 
+$A = \begin{pmatrix}
+a & b \\
+c & d \\
+\end{pmatrix}$ (choose generators $\{T_1, T_2\} ⊆ E[n]$ which correspond to
+$\{ (1, 0), (0, 1)\} ∈ ℤ_n × ℤ_n$)
+
+Any $2x2$ satisfies
+$$ A² - \textrm{tr}(A · A) + \det(A·I) = 0 $$
+where $\textrm{tr}(A) = a + d$.
+
+We showed that
+$$\det(A_n) = \deg(\Phi_n) \mod n $$
+and another direct calc shows
+$$ \textrm{tr}(A_n) = 1 + \det(A_n) = \det(I - A_n) $$
+thus
+\begin{align*}
+\textrm{tr}(A_n) &= 1 + \deg \Phi_q + \deg(\textrm{id} - \Phi_q) \\
+    &= 1 + \deg \Phi_q + \deg(\Phi_q - \textrm{id}) \\
+    &= 1 + q - (q + 1 - t) \mod n \\
+    &= t \mod n
+\end{align*}
+substititng, we get
+$$ A² - t·A + q·I = 0 $$
+Now since this is true for infinitely many n,
+it should be true in End($E$) $⇒$
+$$ \Phi_q² + [t]·\Phi_q + [q] = 0 $$
+
