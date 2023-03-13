@@ -248,3 +248,7 @@ We can now very easily rewrite the above as
 
 $$ R(f, g) = a_n^m \prod_{i = 1}^n g(x_i) = (-1)^{nm} b_m^n \prod_{j = 1}^m f(y_j) $$
 
+# References
+
+* [Resultants, Discriminants, Bezout, Nullstellensatz, etc,](https://people.reed.edu/~jpb/alg/notes/101.pdf)
+
