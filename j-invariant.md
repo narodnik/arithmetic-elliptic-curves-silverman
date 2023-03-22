@@ -27,12 +27,14 @@ $$ \det(A_n) = \deg Φ_q \mod{n} $$
 Another calc shows
 $$ \textrm{tr}(A_n) = 1 + \det(A_n) - \det(I - A_n) $$
 so
-$$ \textrm{tr}(A_n) = 1 + q + \deg(\textrm{id} - Φ_q) \mod{n} $$
+$$ \textrm{tr}(A_n) = 1 + q - \deg(\textrm{id} - Φ_q) \mod{n} $$
 since $\deg(\textrm{id} - Φ_q) = \# E(𝔽_q) = q + 1 - t$
 so
-$$A_n - [1 + q - (q + 1) - t]A_n + qI = 0 $$
+$$A_n - [1 + q - (q + 1 - t)]A_n + qI = 0 $$
 for 2x2 matrices.
-$$ \underbrace{A_n - [t] A_n + qI = 0}_{\textrm{representation of } α|_{E[n]}} $$
+Remember that $A_n$ is a matrix in $E[n]$ so the matrix is defined over mod $n$.
+
+$$ \underbrace{A_n² - [t] A_n + qI = 0}_{\textrm{representation of } α|_{E[n]}} $$
 
 This means that for any $n$ such that $p \nmid n$ then for all
 $P ∈ E[n]$
