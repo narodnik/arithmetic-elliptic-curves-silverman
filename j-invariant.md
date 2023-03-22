@@ -30,7 +30,7 @@ so
 $$ \textrm{tr}(A_n) = 1 + q - \deg(\textrm{id} - Φ_q) \mod{n} $$
 since $\deg(\textrm{id} - Φ_q) = \# E(𝔽_q) = q + 1 - t$
 so
-$$A_n - [1 + q - (q + 1 - t)]A_n + qI = 0 $$
+$$A_n² - [1 + q - (q + 1 - t)]A_n + qI = 0 $$
 for 2x2 matrices.
 Remember that $A_n$ is a matrix in $E[n]$ so the matrix is defined over mod $n$.
 
