@@ -164,3 +164,152 @@ Also $α$ has an inverse $α⁻¹(x, y) = (x/μ², y/μ³)$.
 
 And then composing them clearly gives the identity.
 
+# Tate Pairing Recap
+
+$$ q = pⁿ, r | \#E(𝔽_q) $$
+with $r$ prime.
+$$ E[r] = \{ P ∈ E(\bar{𝔽}_{qᵏ}) : rP = ∞ \} $$
+$$ E[r] ⊆ E(𝔽_{qᵏ}) $$
+$$ τ : E[r] × E(𝔽_{qᵏ})/rE(𝔽_{qᵏ}) → μ_r $$
+so this $k$ is the embedding degree.
+
+## Embedding Degree
+
+1. $r|\#E(𝔽_q)$
+2. gcd$(r, q - 1)$
+
+Embedding degree of $E$ wrt $r$ is the minimal $k$ such that
+$$ r | qᵏ - 1 $$
+
+Also we assume gcd($r, k) = 1$.
+
+We want to extract a type II bilinear pairing
+$$ G₁ × G₂ → G_T $$
+$$ |G₁| = |G₂| = |G_T| = r $$
+
+For $G₁$, recall that $E(𝔽_q)$ has the property that for any $r | \#E(𝔽_q)$ there is a subgroup of order $r$
+with $|G₁| = r$.
+
+Now we find the $k$ such that we have $G₂$.
+
+# Balasubramanian-Koblitz
+
+Theorem: $r | \#E(𝔽_q)$ and gcd$(r, q - 1) = 1$ then $E[r] ⊆ E(𝔽_{qᵏ})$
+iff $r | qᵏ - 1$.
+
+## $r | qᵏ - 1 ⇒ E[r] ⊆ E(𝔽_{qᵏ})$
+
+Hasse-Weil states that in End$(E)$ then $Φ² - [t]Φ + [q] = 0$ where $t = q + 1 - \#E(𝔽_q)$.
+
+**Lemma**: for $r$ as above
+$$ (Φ - [1])(Φ - [q]) ≡ 0 \mod{r} $$
+
+Denote $\#E(𝔽_q) = hr$. We usually call $h$ the cofactor, and $p(x) = x² - tx + q$.
+\begin{align*}
+p(x) &= x² - tx + q \\
+    &= x² - (q + 1 - hr)x + q \\
+    &≡ x² - (q + 1)x + q \mod{r} \\
+    &≡ (x - 1)(x - q) \mod{r}
+\end{align*}
+
+**Def**: the lth eigenspace of $Φ$ is
+$$ \textrm{Eig}_ℓ(Φ) = \{ P ∈ E(\bar{𝔽}_q) : Φ(P) = ℓP \} $$
+so for example the 1th eigenspace is simply $E(\bar{𝔽}_q)$.
+
+We set $H₁ = \textrm{Eig}₁(Φ) \cap E[r]$ and $H_q = \textrm{Eig}_q(Φ) \cap E[r]$.
+
+**Corollary:**
+\begin{align*}
+E[r] &= \{ aP + bQ : P ∈ H₁, Q ∈ H_q \} \\
+    &= H₁ × H_q
+\end{align*}
+(remembering E[r] contains points from the closure)
+
+$$ E[r] ⊆ \{ R ∈ E(\bar{𝔽}_q) : (Φ - 1)(Φ - q)(R) = 0 \} $$
+$H₁ =$ roots of $Φ - 1 \cap E[r]$, $H_q =$ roots of $Φ - q \cap E[r]$.
+
+## Selecting $G₁$
+
+$r$ is prime and $E[r] \cong H₁ × H_r$, so in practice a natural choice of $G₁$ is
+$$ G₁ = H₁ = E(𝔽_q)[r] $$
+
+**Def**: let $r$ be prime $r | \#E(𝔽_q)$ and gcd$(r, q - 1) = 1$ and $k$ the embedding degree
+(minimal integer such that $r|qᵏ - 1$ and gcd$(k, r) = 1$).
+
+The trace map is
+$$ Tr : E(𝔽_{qᵏ}) → E(𝔽_q) $$
+$$ Tr(P) = P + Φ(P) + Φ²(P) + ⋯ + Φ^{k - 1}(P) $$
+(not to be confused with trace of Frobenius)
+
+Note $Φᵏ$ is the $qᵏ$-Frobenius map hence the identity.
+
+$$ Φ : E(\bar{𝔽}_q) → E(\bar{𝔽}_q) $$
+$$ Φ : E(𝔽_q) → E(𝔽_q) $$
+$$ Φᵏ : E(\bar{𝔽}_q) → E(\bar{𝔽}_q) $$
+$$ Φᵏ : E(𝔽_{q^k}) → E(𝔽_{q^k}) $$
+where 2nd and 4th lines are the identity.
+
+\begin{align*}
+Φ(Tr(P)) &= Φ(P + Φ(P) + Φ²(P) + ⋯ + Φ^{k - 1}(P)) \\
+         &= Φ(P) + Φ²(P) + Φ³(P) + ⋯ + Φ^{k - 1}(P) + P \\
+         &= Tr(P)
+\end{align*}
+so the trace image is fixed under action by $Φ$ and hence
+$$ \textrm{Im}(Tr) ⊆ E(𝔽_q) $$
+and not only in $E(𝔽_{qᵏ})$.
+
+**Lemma:** the k-eigenspace of $Tr$ is $E(𝔽_q)[r] = H₁$.
+
+If $R ∈ E(𝔽_q)[r]$ then $Φ(R) = R$ which means $Tr(R) = R + … + R = kR$.
+So $R$ is a k eigenvector of the trace.
+
+Likewise if $R ∈ E(𝔽_{qᵏ})$ such that $Tr(R) = kR$ then $Φ(Tr(R)) = Φ(kR) = kΦ(R)$,
+and since $Φ(Tr(R)) = Tr(R)$ then $Φ(Tr(R)) = Tr(R)$.
+Then $k(Φ(R) - R) = ∞ ⇒ Φ(R) = R$ since gcd$(k, r) = 1$ since then $kP = ∞$ otherwise.
+
+So $Φ$ fixes all points $R ∈ E[r]$ such that $Tr(R) = kR$ hence such points must be in $E(𝔽_q)[r]$.
+
+## Defining $G₂$
+
+1. $H₁ = E(𝔽_q)[r]$
+2. $H_q = \{ R ∈ E[r] : Tr(R) = ∞ \}$
+
+We see (1) is immediate from before.
+
+Let $R ∈ E[r]$ with $Tr(R) = ∞$. Write $R = aP + bQ$ for $P ∈ H₁, Q ∈ H_q$.
+
+\begin{align*}
+Φ(R) &= Φ(aP + bQ) \\
+    &= aP + bqQ \\
+Φ²(R) &= aP + bq² Q
+\end{align*}
+
+$$ ∞ = Tr(R) = kaP + b(1 + q + ⋯  + q^{k - 1}) Q $$
+note that $1 + q + ⋯  + q^{k - 1} = \frac{qᵏ - 1}{q - 1}$.
+$$ ⇒ ∞ = kaP + b\left(\frac{qᵏ - 1}{q - 1}\right) Q $$
+so $a ≡ 0 \mod{r}$ since $H₁, H_q$ are subgroups with trivial intersections.
+
+Conversely, if $R = Q ∈ H_q$ then
+$$ Tr(Q) = \frac{q^k - 1}{q - 1}Q $$
+but $r | q^k - 1$ and $r \nmid q - 1$ so $r | \frac{q^k - 1}{q - 1}$
+$$ ⇒ Tr(Q) = 0 $$
+
+## <= of BR theorem
+
+For $E, r, k, q$ as above
+$$ E[r] ⊆ E(𝔽_{q^k}) $$
+
+Let $R ∈ E[r]$, write $R = aP + bQ$ with $P ∈ H₁, Q ∈ H_q$, then
+$Tr(Q) = ∞$ and
+$$ Φᵏ(Q) = qᵏQ = Q $$
+since $r | qᵏ - 1$.
+Furthermore
+$$ Φᵏ(P) = P $$
+because $P ∈ E(𝔽_q)[r] ⊆ E(𝔽_q)$. Thus
+\begin{align*}
+Φᵏ(R) &= Φᵏ(aP + bQ) \\
+    &= aP + bQ
+\end{align*}
+so $E[r]$ is fixed by $Φᵏ$ hence
+$$ E[r] ⊆ E(𝔽_{qᵏ}) $$
+
