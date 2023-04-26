@@ -287,7 +287,7 @@ Let $R ∈ E[r]$ with $Tr(R) = ∞$. Write $R = aP + bQ$ for $P ∈ H₁, Q ∈ 
 $$ ∞ = Tr(R) = kaP + b(1 + q + ⋯  + q^{k - 1}) Q $$
 note that $1 + q + ⋯  + q^{k - 1} = \frac{qᵏ - 1}{q - 1}$.
 $$ ⇒ ∞ = kaP + b\left(\frac{qᵏ - 1}{q - 1}\right) Q $$
-so $a ≡ 0 \mod{r}$ since $H₁, H_q$ are subgroups with trivial intersections.
+so $a ≡ 0 \mod{r}$ since $H₁, H_q$ are subgroups with trivial intersections, and the order of $P$ is $r$.
 
 Conversely, if $R = Q ∈ H_q$ then
 $$ Tr(Q) = \frac{q^k - 1}{q - 1}Q $$
